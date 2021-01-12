@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Md5 } from 'ts-md5/dist/md5';
 
-import { server } from 'src/environments/environment';
-import { DatosConJwt } from 'src/app/interfaces/interfaces'
+import { DatosConJwt, Usuario } from 'src/app/interfaces/interfaces'
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +19,12 @@ export class LoginService {
   };
 
   // Método que busca usuario para iniciar sesión.
-  searchUser(user: any): Observable<DatosConJwt> {
+  searchUser(user: Usuario): Observable<DatosConJwt> {
+    const md5 = new Md5();
     const endpoint = `/usuario/autentica`;
+
+    user.password = md5.appendStr(user.password).end().toString();
+    
 
     return this.http.post<DatosConJwt>(endpoint, user, this.httpOptions).pipe(
       // tap(data => {

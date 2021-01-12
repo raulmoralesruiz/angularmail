@@ -18,9 +18,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  // linea providers falla
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
-  // providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/interfaces/interfaces';
 import { AutenticadorJwtService } from 'src/app/services/autenticador-jwt.service';
 
 import { LoginService } from 'src/app/services/login.service';
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.minLength(4),
       ]),
-      password: new FormControl('81dc9bdb52d04dc20036dbd8313ed055', [
+      password: new FormControl('1234', [
         Validators.required,
       ]),
     });
@@ -35,15 +36,12 @@ export class LoginComponent implements OnInit {
   autenticaUsuario() {
     console.log('Usuario válido: ' + this.loginForm.controls.usuario.valid);
 
-    let json = {
+    let usuario: Usuario = {
       usuario: this.loginForm.controls.usuario.value,
-      password: this.loginForm.controls.password.value,
-    };
+      password: this.loginForm.controls.password.value
+    }
 
-    // console.log(json);
-    // console.log('u: ' + json.usuario + ' - p: ' + json.password);
-
-    this.loginService.searchUser(json).subscribe(
+    this.loginService.searchUser(usuario).subscribe(
       (user) => {
         if (user.jwt != undefined) {
           // console.log(user["jwt"]);

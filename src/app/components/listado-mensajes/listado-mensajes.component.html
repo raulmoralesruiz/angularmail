@@ -1,1 +1,18 @@
 <p>Aquí viene el listado de mensajes</p>
+
+<table border="1">
+    <thead>
+        <th>ID</th>
+        <th>Asunto</th>
+        <th>Fecha</th>
+        <th>Cuerpo</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mensaje of listaMensajes">
+            <td>{{ mensaje.id }}</td>
+            <td>{{ mensaje.asunto }}</td>
+            <td>{{ mensaje.fecha | date:'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ mensaje.cuerpo.substring(0, 30) + '...' }}</td>
+        </tr>
+    </tbody>
+</table>
