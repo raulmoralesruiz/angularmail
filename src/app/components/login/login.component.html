@@ -14,16 +14,16 @@
 
                 <mat-form-field appearance="outline">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput type="password" placeholder="Contraseña" formControlName="password">
-                    <button mat-icon-button matSuffix>
-                        <mat-icon>visibility_off</mat-icon>
+                    <input matInput [type]="ocultarPassword ? 'password' : 'text'" placeholder="Contraseña" formControlName="password">
+                    <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword">
+                        <mat-icon>{{ ocultarPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
                 </mat-form-field>
             </form>
 
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button color="primary" (click)="autenticaUsuario()">Acceder</button>
+            <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="autenticaUsuario()">Acceder</button>
         </mat-card-actions>
     </mat-card>    
 </div>

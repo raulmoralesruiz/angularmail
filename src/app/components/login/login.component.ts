@@ -13,6 +13,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  ocultarPassword: boolean = true;
 
   constructor(
     private loginService: LoginService,
