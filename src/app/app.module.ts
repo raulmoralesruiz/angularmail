@@ -18,9 +18,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogoGeneralComponent } from './components/dialogo-general/dialogo-general.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BarraHerramientasComponent } from './components/barra-herramientas/barra-herramientas.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ListadoMensajesComponent, DialogoGeneralComponent],
+  declarations: [AppComponent, LoginComponent, ListadoMensajesComponent, DialogoGeneralComponent, BarraHerramientasComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -34,7 +38,10 @@ import { DialogoGeneralComponent } from './components/dialogo-general/dialogo-ge
     MatIconModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatTooltipModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
   bootstrap: [AppComponent],
