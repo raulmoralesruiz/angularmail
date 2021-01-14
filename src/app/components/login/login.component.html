@@ -10,6 +10,10 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Usuario</mat-label>
                     <input matInput placeholder="Nombre de usuario" formControlName="usuario">
+                    <ng-container *ngIf="loginForm.controls.usuario.errors != undefined">
+                        <div class="errorEnValidacion" *ngIf="loginForm.controls.usuario.errors.required">Debe introducir algún valor</div>
+                        <div class="errorEnValidacion" *ngIf="loginForm.controls.usuario.errors.minlength">Debe tener al menos 4 caracteres</div>
+                    </ng-container>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
@@ -18,6 +22,9 @@
                     <button mat-icon-button matSuffix (click)="ocultarPassword = !ocultarPassword">
                         <mat-icon>{{ ocultarPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                     </button>
+                    <ng-container *ngIf="loginForm.controls.password.errors != undefined">
+                        <div class="errorEnValidacion" *ngIf="loginForm.controls.password.errors.required">Debe introducir algún valor</div>
+                    </ng-container>
                 </mat-form-field>
             </form>
 

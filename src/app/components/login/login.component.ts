@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { Usuario } from 'src/app/interfaces/interfaces';
 import { AutenticadorJwtService } from 'src/app/services/autenticador-jwt.service';
-
-import { LoginService } from 'src/app/services/login.service';
+import { ComunicacionDeAlertasService } from 'src/app/services/comunicacion-de-alertas.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,10 @@ export class LoginComponent implements OnInit {
   ocultarPassword: boolean = true;
 
   constructor(
-    private loginService: LoginService,
+    private usuarioService: UsuarioService,
     private router: Router,
-    private autenticadorJwtService: AutenticadorJwtService
+    private autenticadorJwtService: AutenticadorJwtService,
+    private comunicacionDeAlertasService: ComunicacionDeAlertasService,
   ) {}
 
   ngOnInit(): void {
@@ -35,14 +37,14 @@ export class LoginComponent implements OnInit {
 
   // Método que autentica al usuario
   autenticaUsuario() {
-    console.log('Usuario válido: ' + this.loginForm.controls.usuario.valid);
+    this.comunicacionDeAlertasService.abrirDialogoCargando();
 
     let usuario: Usuario = {
       usuario: this.loginForm.controls.usuario.value,
       password: this.loginForm.controls.password.value
     }
 
-    this.loginService.searchUser(usuario).subscribe(
+    this.usuarioService.searchUser(usuario).subscribe(
       (user) => {
         if (user.jwt != undefined) {
           // console.log(user["jwt"]);
@@ -50,8 +52,10 @@ export class LoginComponent implements OnInit {
 
           this.autenticadorJwtService.almacenaJwt(user.jwt);
           this.router.navigate(['/listadoMensajes']);
+          this.comunicacionDeAlertasService.cerrarDialogo();
         } else {
-          console.log('Error. Credenciales incorrectas');
+          // console.log('Error. Credenciales incorrectas');
+          this.comunicacionDeAlertasService.abrirDialogoError('Error. Credenciales incorrectas');
         }
       }/* ,
       (error) => {

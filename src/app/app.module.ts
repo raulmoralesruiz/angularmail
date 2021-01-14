@@ -15,9 +15,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogoGeneralComponent } from './components/dialogo-general/dialogo-general.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ListadoMensajesComponent],
+  declarations: [AppComponent, LoginComponent, ListadoMensajesComponent, DialogoGeneralComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,7 +32,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    MatButtonModule, 
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
   bootstrap: [AppComponent],

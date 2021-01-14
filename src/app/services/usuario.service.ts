@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { Md5 } from 'ts-md5/dist/md5';
+import { tap } from 'rxjs/operators';
 
 import { DatosConJwt, Usuario } from 'src/app/interfaces/interfaces'
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class UsuarioService {
   constructor(private http: HttpClient) {
-    console.log('servicio login funcionando');
+    console.log('servicio usuario funcionando');
   }
 
   httpOptions = {
