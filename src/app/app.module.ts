@@ -22,6 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BarraHerramientasComponent } from './components/barra-herramientas/barra-herramientas.component';
+import { ImagenUsuarioComponent } from './components/imagen-usuario/imagen-usuario.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { BarraHerramientasComponent } from './components/barra-herramientas/barr
     ListadoMensajesComponent,
     DialogoGeneralComponent,
     BarraHerramientasComponent,
+    ImagenUsuarioComponent,
   ],
   imports: [
     BrowserModule,
