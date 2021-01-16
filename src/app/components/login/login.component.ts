@@ -47,14 +47,11 @@ export class LoginComponent implements OnInit {
     this.usuarioService.searchUser(usuario).subscribe(
       (user) => {
         if (user.jwt != undefined) {
-          // console.log(user["jwt"]);
-          console.log(user.jwt);
-
           this.autenticadorJwtService.almacenaJwt(user.jwt);
           this.router.navigate(['/listadoMensajes']);
           this.comunicacionDeAlertasService.cerrarDialogo();
+          this.usuarioService.emitirNuevoCambioEnUsuarioAutenticado();
         } else {
-          // console.log('Error. Credenciales incorrectas');
           this.comunicacionDeAlertasService.abrirDialogoError('Error. Credenciales incorrectas');
         }
       }/* ,

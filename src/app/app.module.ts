@@ -24,7 +24,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BarraHerramientasComponent } from './components/barra-herramientas/barra-herramientas.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ListadoMensajesComponent, DialogoGeneralComponent, BarraHerramientasComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    ListadoMensajesComponent,
+    DialogoGeneralComponent,
+    BarraHerramientasComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,7 +49,13 @@ import { BarraHerramientasComponent } from './components/barra-herramientas/barr
     MatMenuModule,
     MatTooltipModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
