@@ -61,4 +61,19 @@ export class UsuarioService {
       this.cambiosEnUsuarioAutenticado.emit(usuarioAutenticado);
     });
   }
+
+  ratificaPasswordUsuarioAutenticado(password: string): Observable<object> {
+    var dto = {
+      'password': password
+    };
+    return this.http.post<object>('/usuario/ratificaPassword', dto);
+  }
+
+  cambiaPasswordUsuarioAutenticado(nuevaPassword: string): Observable<object> {
+    var dto = {
+      'password': nuevaPassword
+    };
+    return this.http.post<object>('/usuario/modificaPassword', dto);
+  }
+
 }

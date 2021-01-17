@@ -45,6 +45,7 @@ export class BarraHerramientasComponent implements OnInit {
   }
 
   navegarHaciaCambiaPassword () {
+    this.router.navigate(['/cambioPassword'])
   }
 
   navegarHaciaDatosPersonales () {

@@ -23,6 +23,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BarraHerramientasComponent } from './components/barra-herramientas/barra-herramientas.component';
 import { ImagenUsuarioComponent } from './components/imagen-usuario/imagen-usuario.component';
+import { CambioPasswordComponent } from './components/cambio-password/cambio-password.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ImagenUsuarioComponent } from './components/imagen-usuario/imagen-usuar
     DialogoGeneralComponent,
     BarraHerramientasComponent,
     ImagenUsuarioComponent,
+    CambioPasswordComponent,
   ],
   imports: [
     BrowserModule,
