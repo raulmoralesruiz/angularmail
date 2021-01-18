@@ -29,6 +29,7 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { MatTableModule } from '@angular/material/table';
     MatNativeDateModule,
     MatSelectModule,
     MatTableModule,
+    MatCheckboxModule,
   ],
   providers: [
     {

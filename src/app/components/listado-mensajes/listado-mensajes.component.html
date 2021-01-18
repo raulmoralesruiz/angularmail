@@ -1,6 +1,15 @@
 <div class="contenedorTabla">
     <table mat-table [dataSource]="dataSourceTabla" class="example-table" id="tablaMensajes">
 
+        <ng-container matColumnDef="Select">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+            </td>
+        </ng-container>
+
         <ng-container matColumnDef="De">
             <th mat-header-cell *matHeaderCellDef>De</th>
             <td mat-cell *matCellDef="let row">{{row.remitente.nombre}}</td>
@@ -21,3 +30,5 @@
             (click)="seleccionarMensaje(row)"></tr>
     </table>
 </div>
+
+<button mat-raised-button color="primary" (click)="verMensajesSeleccionados()">Ver Selección</button>
