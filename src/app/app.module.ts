@@ -30,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatTableModule,
     MatCheckboxModule,
+    MatTabsModule,
   ],
   providers: [
     {

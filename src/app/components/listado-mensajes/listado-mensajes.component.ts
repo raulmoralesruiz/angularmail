@@ -94,4 +94,9 @@ export class ListadoMensajesComponent implements OnInit, AfterViewInit {
       row.id + 1
     }`;
   }
+
+  cambioEnTiposDeMensajesVisualizados(indiceTiposDeMensajeSeleccionado) {
+    this.tipoListadoMensajes = indiceTiposDeMensajeSeleccionado
+    this.actualizaListadoMensajes();
+  }  
 }
