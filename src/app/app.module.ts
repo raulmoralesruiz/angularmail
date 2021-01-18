@@ -28,6 +28,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatTableModule,
   ],
   providers: [
     {

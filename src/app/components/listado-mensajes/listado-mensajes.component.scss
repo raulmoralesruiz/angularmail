@@ -1,0 +1,17 @@
+.contenedorTabla {
+  position: relative;
+  min-height: 200px;
+}
+
+table {
+  width: 100%;
+}
+
+tr.element-row:hover {
+  background: whitesmoke;
+  cursor: pointer
+}
+
+.noLeido {
+  font-weight: bold;
+}
