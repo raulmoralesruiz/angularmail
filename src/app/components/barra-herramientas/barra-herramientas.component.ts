@@ -49,6 +49,7 @@ export class BarraHerramientasComponent implements OnInit {
   }
 
   navegarHaciaDatosPersonales () {
+    this.router.navigate(['/datosUsuario'])
   }
 
 }

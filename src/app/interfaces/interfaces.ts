@@ -26,3 +26,13 @@ export interface UsuarioData {
     sexo: number;
     imagen: string;
 }
+
+export interface Nacionalidad {
+    id: number;
+    descripcion: string;
+}
+
+export interface TipoSexo {
+    id: number;  
+    descripcion: string;
+}

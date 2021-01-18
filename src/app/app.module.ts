@@ -24,6 +24,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BarraHerramientasComponent } from './components/barra-herramientas/barra-herramientas.component';
 import { ImagenUsuarioComponent } from './components/imagen-usuario/imagen-usuario.component';
 import { CambioPasswordComponent } from './components/cambio-password/cambio-password.component';
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { CambioPasswordComponent } from './components/cambio-password/cambio-pas
     BarraHerramientasComponent,
     ImagenUsuarioComponent,
     CambioPasswordComponent,
+    DatosUsuarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +58,9 @@ import { CambioPasswordComponent } from './components/cambio-password/cambio-pas
     MatToolbarModule,
     MatMenuModule,
     MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
   providers: [
     {
@@ -59,6 +68,7 @@ import { CambioPasswordComponent } from './components/cambio-password/cambio-pas
       useClass: HttpInterceptorService,
       multi: true,
     },
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
   ],
   bootstrap: [AppComponent],
 })

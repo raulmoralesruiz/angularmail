@@ -38,7 +38,9 @@ export class UsuarioService {
       ();
   }
 
-  getUsuarioAutenticado(incluirImagen: boolean = false): Observable<UsuarioData> {
+  getUsuarioAutenticado(
+    incluirImagen: boolean = false
+  ): Observable<UsuarioData> {
     return this.http
       .get<UsuarioData>('/usuario/getAutenticado?imagen=' + incluirImagen)
       .pipe(
@@ -46,7 +48,8 @@ export class UsuarioService {
           if (
             (this.usuarioAutenticado == null && usuarioAutenticado != null) ||
             (this.usuarioAutenticado != null && usuarioAutenticado == null) ||
-            (this.usuarioAutenticado != null && usuarioAutenticado == null &&
+            (this.usuarioAutenticado != null &&
+              usuarioAutenticado == null &&
               this.usuarioAutenticado.id != usuarioAutenticado.id)
           ) {
             this.emitirNuevoCambioEnUsuarioAutenticado();
@@ -64,16 +67,23 @@ export class UsuarioService {
 
   ratificaPasswordUsuarioAutenticado(password: string): Observable<object> {
     var dto = {
-      'password': password
+      password: password,
     };
     return this.http.post<object>('/usuario/ratificaPassword', dto);
   }
 
   cambiaPasswordUsuarioAutenticado(nuevaPassword: string): Observable<object> {
     var dto = {
-      'password': nuevaPassword
+      password: nuevaPassword,
     };
     return this.http.post<object>('/usuario/modificaPassword', dto);
   }
 
+  actualizaDatosUsuario(usuario: Usuario) {
+    return this.http.post<String>('/usuario/update', usuario).pipe(
+      tap((strResult) => {
+        this.emitirNuevoCambioEnUsuarioAutenticado();
+      })
+    );
+  }
 }
