@@ -31,7 +31,7 @@ import { DatosUsuarioComponent } from './components/datos-usuario/datos-usuario.
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -67,6 +67,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTableModule,
     MatCheckboxModule,
     MatTabsModule,
+    MatPaginatorModule,
   ],
   providers: [
     {
