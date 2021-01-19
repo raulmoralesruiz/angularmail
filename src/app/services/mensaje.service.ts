@@ -10,6 +10,11 @@ import { ListadoMensajes, Mensaje } from '../interfaces/interfaces';
 })
 export class MensajeService {
 
+  public static readonly RECIBIDOS = 0;
+  public static readonly ENVIADOS = 1;
+  public static readonly SPAM = 2;
+  public static readonly ARCHIVADOS = 3;
+
   constructor(private http: HttpClient) {
     console.log('servicio mensaje funcionando');
   }
@@ -20,4 +25,13 @@ export class MensajeService {
 //      tap(data => console.log(data)),
     );
   }
+
+  accionSobreMensajes (ids: number[], tipoAccion: number) {
+    var dto = {
+      'ids': ids,
+      'tipoAccion': tipoAccion
+    };
+    return this.http.post<string>('/mensajes/accionSobreMensajes', dto);
+  }
+
 }

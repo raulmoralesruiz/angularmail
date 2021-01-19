@@ -121,4 +121,76 @@ export class ListadoMensajesComponent implements OnInit, AfterViewInit {
     this.tipoListadoMensajes = indiceTiposDeMensajeSeleccionado;
     this.actualizaListadoMensajes();
   }
+
+  getIdsMensajesSeleccionados(): number[] {
+    var idsMensajesSeleccionados = [];
+    this.selection.selected.forEach((item, index) => {
+      idsMensajesSeleccionados.push(item.id);
+    });
+    return idsMensajesSeleccionados;
+  }
+
+  accionSobreMensajes(tipoAccion: number) {
+    this.mensajesService
+      .accionSobreMensajes(this.getIdsMensajesSeleccionados(), tipoAccion)
+      .subscribe((strResult) => {
+        if (strResult['result'] == 'fail') {
+          this.comunicacionAlertas.abrirDialogoError(
+            'Error al realizar la operación. Inténtelo más tarde.'
+          );
+        } else {
+          this.actualizaListadoMensajes();
+        }
+      });
+  }
+
+  getTextoColumnaRemitente(mensaje: Mensaje) {
+    if (this.usuarioAutenticado.id != mensaje.remitente.id) {
+      return 'De: ' + mensaje.remitente.nombre;
+    } else {
+      var str: string = 'Para: ';
+      mensaje.destinatarios.forEach(function (destinatario, i, destinatarios) {
+        str += destinatario.nombre;
+        if (i < destinatarios.length - 1) {
+          str += ', ';
+        }
+      });
+      return str;
+    }
+  }
+
+  hayAlgunElementoSeleccionadoEnTabla(): boolean {
+    return this.selection.selected.length > 0;
+  }
+
+  botonArchivarHabilitado(): boolean {
+    return (
+      this.tipoListadoMensajes == MensajeService.RECIBIDOS &&
+      this.hayAlgunElementoSeleccionadoEnTabla()
+    );
+  }
+
+  botonSpamHabilitado(): boolean {
+    return (
+      this.tipoListadoMensajes == MensajeService.RECIBIDOS &&
+      this.hayAlgunElementoSeleccionadoEnTabla()
+    );
+  }
+
+  botonEliminarHabilitado(): boolean {
+    return (
+      this.tipoListadoMensajes != MensajeService.ENVIADOS &&
+      this.hayAlgunElementoSeleccionadoEnTabla()
+    );
+  }
+
+  botonMoverARecibidosHabilitado(): boolean {
+    return (
+      (this.tipoListadoMensajes == MensajeService.SPAM ||
+        this.tipoListadoMensajes == MensajeService.ARCHIVADOS) &&
+      this.hayAlgunElementoSeleccionadoEnTabla()
+    );
+  }
+
+  nuevoMensaje() {}
 }
