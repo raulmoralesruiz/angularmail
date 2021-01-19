@@ -33,6 +33,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DetalleMensajeComponent } from './components/detalle-mensaje/detalle-mensaje.component';
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import { MatDividerModule } from '@angular/material/divider';
     ImagenUsuarioComponent,
     CambioPasswordComponent,
     DatosUsuarioComponent,
+    DetalleMensajeComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatTabsModule,
     MatPaginatorModule,
     MatDividerModule,
+    MatSnackBarModule,
   ],
   providers: [
     {

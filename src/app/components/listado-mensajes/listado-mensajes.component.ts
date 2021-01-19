@@ -1,5 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -7,6 +8,7 @@ import { ListadoMensajes, Mensaje, UsuarioData } from 'src/app/interfaces/interf
 import { ComunicacionDeAlertasService } from 'src/app/services/comunicacion-de-alertas.service';
 import { MensajeService } from 'src/app/services/mensaje.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { DetalleMensajeComponent } from '../detalle-mensaje/detalle-mensaje.component';
 
 @Component({
   selector: 'app-listado-mensajes',
@@ -31,7 +33,8 @@ export class ListadoMensajesComponent implements OnInit, AfterViewInit {
     private mensajesService: MensajeService,
     private comunicacionAlertas: ComunicacionDeAlertasService,
     private usuarioService: UsuarioService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -91,7 +94,15 @@ export class ListadoMensajesComponent implements OnInit, AfterViewInit {
   }
 
   seleccionarMensaje(mensaje: Mensaje) {
-    console.log(mensaje);
+    const dialogRef = this.dialog.open(DetalleMensajeComponent, {
+      width: '100%',
+      height: '90%',
+      data: mensaje,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.actualizaListadoMensajes();
+    });
   }
 
   isAllSelected() {

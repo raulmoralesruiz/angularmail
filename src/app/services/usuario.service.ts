@@ -86,4 +86,9 @@ export class UsuarioService {
       })
     );
   }
+
+  getUsuario(id: number, incluirImagen: boolean = false): Observable<UsuarioData> {
+    var url= '/usuario/get?id=' + id + '&imagen=' + incluirImagen;
+    return this.http.get<UsuarioData>(url);
+  }
 }
