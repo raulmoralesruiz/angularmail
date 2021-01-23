@@ -9,6 +9,7 @@ import { ComunicacionDeAlertasService } from 'src/app/services/comunicacion-de-a
 import { MensajeService } from 'src/app/services/mensaje.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { DetalleMensajeComponent } from '../detalle-mensaje/detalle-mensaje.component';
+import { NuevoMensajeComponent } from '../nuevo-mensaje/nuevo-mensaje.component';
 
 @Component({
   selector: 'app-listado-mensajes',
@@ -203,5 +204,14 @@ export class ListadoMensajesComponent implements OnInit, AfterViewInit {
     );
   }
 
-  nuevoMensaje() {}
+  nuevoMensaje() {
+    const dialogRef = this.dialog.open(NuevoMensajeComponent, {
+      width: '100%',
+      height: '90%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.actualizaListadoMensajes();
+    });
+  }
 }

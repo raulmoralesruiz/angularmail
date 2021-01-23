@@ -91,4 +91,10 @@ export class UsuarioService {
     var url= '/usuario/get?id=' + id + '&imagen=' + incluirImagen;
     return this.http.get<UsuarioData>(url);
   }
+
+  filterUsuariosByNombreOrEmail(filtro: string): Observable<UsuarioData[]> {
+    return this.http.get<UsuarioData[]>('/usuario/filterByNombreOrEmail?filtro=' + filtro).pipe(
+      tap(result => console.log(result))
+    );
+  }
 }

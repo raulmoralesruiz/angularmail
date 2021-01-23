@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { server } from 'src/environments/environment';
-import { ListadoMensajes, Mensaje } from '../interfaces/interfaces';
+import { ListadoMensajes, Mensaje, UsuarioData } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,17 @@ export class MensajeService {
       'tipoAccion': tipoAccion
     };
     return this.http.post<string>('/mensajes/accionSobreMensajes', dto);
+  }
+
+  enviarNuevoMensaje (destinatarios: UsuarioData[], asunto: string, cuerpo: string) {
+    var idsDestinatarios: number[] = [];
+    destinatarios.forEach(usuario => idsDestinatarios.push(usuario.id)); 
+    var dto = {
+      'idsDestinatarios': idsDestinatarios,
+      'asunto': asunto,
+      'cuerpo': cuerpo
+    };
+    return this.http.put<string>('/mensajes/nuevo', dto);
   }
 
 }

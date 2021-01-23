@@ -35,7 +35,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetalleMensajeComponent } from './components/detalle-mensaje/detalle-mensaje.component';
-
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NuevoMensajeComponent } from './components/nuevo-mensaje/nuevo-mensaje.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { DetalleMensajeComponent } from './components/detalle-mensaje/detalle-me
     CambioPasswordComponent,
     DatosUsuarioComponent,
     DetalleMensajeComponent,
+    NuevoMensajeComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,8 @@ import { DetalleMensajeComponent } from './components/detalle-mensaje/detalle-me
     MatPaginatorModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatChipsModule,
+    MatAutocompleteModule,
   ],
   providers: [
     {
